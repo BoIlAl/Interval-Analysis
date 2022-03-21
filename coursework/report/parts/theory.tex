@@ -1,0 +1,50 @@
+\documentclass[../body.tex]{subfiles}
+\begin{document}
+    \subsection{Особенные матрицы}
+    
+        Интервальная матрица $\textbf{A} \in \mathbb{I}\mathbb{R}^{n \times n}$ называется неособенной (невырожденной), если неособенными являются все точечные $n \times n$ - матрицы $A \in \textbf{A}$.  
+        
+        Интервальная матрица $\textbf{A} \in \mathbb{I}\mathbb{R}^{n \times n}$ называется особенной (вырожденной), если она содержит особенную точечную матрицу.\\ 
+        
+        \textbf{Теорема.}
+         Пусть интервальная матрица  $\textbf{A} \in \mathbb{I}\mathbb{R}^{n \times n}$ такова, что $mid \ \textbf{A}$ неособенная и 
+         \begin{equation*}
+             \max\limits_{1 \leq j \leq n} ( rad \ \textbf{A} \cdot |(mid \  \textbf{A})^{-1}|)_{jj} \geq 1
+         \end{equation*}
+        Тогда \textbf{A} особенная.
+     \subsection{Субдифференциальный метод Ньютона}
+            Итерационный метод строится по следующей формуле
+            
+            \begin{equation}
+                x^{(k)} = x^{(k-1)} - \tau (D^{(k-1)})^{-1}\mathcal{F}(x^{(k-1)})
+            \end{equation}
+            
+            где $\uptau(D^{(k-1)})^{-1}\mathcal{F}(x^{(k-1)})$ - субградиент в $x^{(k-1)}$, $\tau \in [0;1]$ - релаксационный параметр, с помощью которого можно расширить область сходимости. На практике рекомендуется брать $\tau=1$, тогда метод даст наиболее точное решение. В этой работе в качестве $\tau$ будет взята единица
+            
+            При этом 
+            \begin{equation}
+                \mathcal{F}(y) = \textit{sti}(A\textit{sti}^{-1}(y) \circleddash b)
+            \end{equation}
+            
+            \begin{equation}
+                \textit{sti}(x) \: : \: (x_1, ... , x_n) \xrightarrow{} ( -\underline{x_1}, ... , -\underline{x_n}, \overline{x_1}, ... , \overline{x_n})
+            \end{equation}
+            
+            \subsubsection{Условие остановки}
+                \begin{equation}
+                    \| \mathcal{F}(x^{(k)}) \| < \varepsilon
+                \end{equation}
+        
+    \subsubsection{Сходимость методa}
+        \textbf{Теорема.}
+        Пусть интервальная $n \times n$ - матрица $\textbf{C}$ удовлетворяет условию построчной согласованности, и интервальная $2n ×\times 2n$ - матрица
+        \begin{equation*}
+            \begin{pmatrix}
+              (pro \ \textbf{C})^+ & (pro \ \textbf{C})^- \\
+              (pro \ \textbf{C})^-& (pro \ \textbf{C})^+
+            \end{pmatrix}
+        \end{equation*}
+        является неособенной. Если при этом \textbf{C} достаточно узка, то алгоритм SubDiff2 со значением релаксационного параметра $\tau = 1$ сходится за конечное число итераций к $sti (\textbf{x}^*)$, где $\textbf{x}^*$ — формальное
+        решение интервальной системы $\textbf{C}x + \textbf{d} = 0$.
+        
+\end{document}
